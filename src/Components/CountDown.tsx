@@ -11,9 +11,13 @@ export const CountDown = () => {
     }, [count]);
 
     return (
-        <div className="countdown-container-classic">
-            <div className="countdown-ring-classic"></div>
-            <span className="count-down-text-classic">{count}</span>
-        </div>
+        <>
+            {count > 0 && (
+                <div className="countdown-container-classic">
+                    <div className="countdown-ring-classic"></div>
+                    <span className="count-down-text-classic">{count}</span>
+                </div>
+            )}
+        </>
     );
 };

@@ -18,9 +18,9 @@ export const SPIN_SPINNING = 2; // spinning
 export const SPIN_ENDING = 3; // end
 
 export const SPIN_DURATIONS: Record<number, number> = {
-    [SPIN_STARTING]: 5000,
-    [SPIN_SPINNING]: 4000,
-    [SPIN_ENDING]: 3000,
+    [SPIN_STARTING]: 6000,
+    [SPIN_SPINNING]: 4500,
+    [SPIN_ENDING]: 4000,
 };
 
 export type SpinState =
