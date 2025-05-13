@@ -1,14 +1,30 @@
-import {FC, useState} from "react";
+import {FC, useEffect, useRef, useState} from "react";
 
 interface BetGridControlsProps {
     amount: number;
+    isSpinning: boolean;
+    isCountingDown: boolean;
 }
 
-const BetGridControls:FC<BetGridControlsProps> = ({amount}) => {
+const BetGridControls:FC<BetGridControlsProps> = ({amount,isSpinning}) => {
     const [selectedColumnKeys, setSelectedColumnKeys] = useState<number[]>([]);
     const [selectedGridKeys, setSelectedGridKeys] = useState<number[]>([]);
+    const prevSpinRef = useRef<boolean>(false);
+
+    useEffect(() => {
+        // Detect transition from spinning to not spinning
+        if (prevSpinRef.current && !isSpinning) {
+            setSelectedColumnKeys([]);
+            setSelectedGridKeys([]);
+            console.log ("Resetting Bet Grid Controls");
+        }
+        prevSpinRef.current = isSpinning;
+    }, [isSpinning]);
 
     const handleClick = (type: "column" | "grid", index: number) => {
+        if (isSpinning) return; // 🚫 prevent selection when spinning
+
+
         if (type === "column") {
             const newSelected = selectedColumnKeys.includes(index)
                 ? selectedColumnKeys.filter((key) => key !== index)
@@ -55,7 +71,7 @@ const BetGridControls:FC<BetGridControlsProps> = ({amount}) => {
                 {columnControls.map(({ number, multiplier }, index) => (
                     <div
                         key={`col-${index}`}
-                        className={`spin-classic-column-${number} ${selectedColumnKeys.includes(index) ? "active" : ""}`}
+                        className={`spin-classic-column-${number} ${selectedColumnKeys.includes(index) ? "active" : ""}${isSpinning ? "disabled" : ""}`}
                         onClick={() => handleClick("column", index)}
                         style={{ position: "relative", overflow: "hidden" }}
                     >
@@ -73,7 +89,7 @@ const BetGridControls:FC<BetGridControlsProps> = ({amount}) => {
             {gridControls.map(({ letter, multiplier }, index) => (
                 <div
                     key={`grid-${index}`}
-                    className={`spin-classic-grid-item ${selectedGridKeys.includes(index) ? "active" : ""}`}
+                    className={`spin-classic-grid-item ${selectedGridKeys.includes(index) ? "active" : ""}${isSpinning ? "disabled" : ""}`}
                     onClick={() => handleClick("grid", index)}
                 >
                     {letter}

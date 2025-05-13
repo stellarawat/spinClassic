@@ -12,7 +12,10 @@ const BetClassicControls: FC<SpinBetProps> = ({spinBetAmount, onChangeSpinBetAmo
         <div>
             <div className="spin-classic-bet-amount-title">Bet Amount</div>
             <div className="spin-classic-bet-amount-area">
-                <div className="spin-classic-bet-controls">
+                <div className={`spin-classic-bet-controls ${
+                    isSpinning ? "disabled-bet" : ""
+                }`}
+                >
                     {[5, 10, 50, 100].map((amount) => (
                         <div
                             className={`spin-classic-bet-controls-buttons ${spinBetAmount === amount ? "spin-active-bet" : ""}`}
@@ -23,7 +26,10 @@ const BetClassicControls: FC<SpinBetProps> = ({spinBetAmount, onChangeSpinBetAmo
                         </div>
                     ))}
                 </div>
-                <div className="spin-classic-plus-minus-input-container">
+                <div className={`spin-classic-plus-minus-input-container ${
+                    isSpinning ? "disabled-bet" : ""
+                }`}
+                >
                     <div className="spin-classic-plus-minus"
                          onClick={() => onChangeSpinBetAmount(Math.max(spinBetAmount - 1, 0))}
                     >

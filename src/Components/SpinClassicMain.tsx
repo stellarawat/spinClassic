@@ -94,6 +94,8 @@ export const SpinClassicMain: FC = () => {
                 <div className="spin-classic-controls-container">
                     <BetGridControls
                         amount={settings.betAmount}
+                        isSpinning={isSpinning}
+                        isCountingDown={false}
                     />
 
                     <BetClassicControls
