@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef, useState} from "react";
-import pointerImg from "../assets/images/fortune-wheel-arrow.webp";
+import pointerImg from "../assets/images/pointer-removebg-preview.png";
 import centerGif from "../assets/images/center ball.gif";
 import {placeOccurrences, SPIN_SPINNING, WheelData} from "../Utils/type.ts";
 
@@ -157,17 +157,17 @@ const SpinClassicCanvas: FC<SpinCanvasProps> = ({spinState, wheelData, onsetWhee
                 }}
             />
 
-            {/* Pointer Canvas */}
-            {/*<canvas*/}
-            {/*    ref={pointerCanvasRef}*/}
-            {/*    style={{*/}
-            {/*        width:"100%",*/}
-            {/*        position: "absolute",*/}
-            {/*        pointerEvents: "none",*/}
-            {/*        top: 0,*/}
-            {/*        left: 0,*/}
-            {/*    }}*/}
-            {/*/>*/}
+             {/*Pointer Canvas */}
+            <canvas
+                ref={pointerCanvasRef}
+                style={{
+                    width:"100%",
+                    position: "absolute",
+                    pointerEvents: "none",
+                    top: 0,
+                    right: 70,
+                }}
+            />
         </div>
     );
 };
