@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef, useState} from "react";
-import pointerImg from "../assets/images/pointer-removebg-preview.png";
+import pointerImg from "../assets/images/pointerrrrr.png";
 import centerGif from "../assets/images/center ball.gif";
 import {placeOccurrences, SPIN_SPINNING, WheelData} from "../Utils/type.ts";
 
@@ -164,7 +164,7 @@ const SpinClassicCanvas: FC<SpinCanvasProps> = ({spinState, wheelData, onsetWhee
                     width:"100%",
                     position: "absolute",
                     pointerEvents: "none",
-                    top: 0,
+                    bottom:218,
                     right: 70,
                 }}
             />
